@@ -1,0 +1,16 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "type": "module",
+  "author": "Oumaima Lairani",
+  "license": "ISC",
+  "dependencies": {
+    "parcel": "^2.10.3"
+  }
+}
