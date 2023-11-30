@@ -11,6 +11,7 @@
   "author": "Oumaima Lairani",
   "license": "ISC",
   "dependencies": {
+    "@fontsource/manrope": "^5.0.17",
     "parcel": "^2.10.3"
   }
 }

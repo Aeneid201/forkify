@@ -1,3 +1,108 @@
+:root {
+  --trans: 0.4s all ease;
+  --manrope: "Manrope";
+  --green: #2d6a4f;
+}
+
+html,
 body {
-  background: #0e0e0e;
+  height: 100%;
+}
+
+body {
+  background: #2d6a4f;
+  font-family: var(--manrope);
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.header {
+  background: #f9f5f3;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  display: flex;
+  align-items: center;
+  min-height: 100px;
+  justify-content: center;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 2rem 6rem 0.5rem rgba(97, 85, 81, 0.2);
+  min-height: 100vh;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+  font-family: var(--manrope);
+}
+
+.header .default {
+  padding: 20px;
+  display: block;
+}
+.form-control {
+  border: none;
+  outline: none;
+  padding-left: 20px;
+  width: 100%;
+  font-size: 16px;
+  font-family: var(--manrope);
+  background: none;
+}
+
+form {
+  background-color: #fff;
+  border-radius: 10rem;
+  display: flex;
+}
+
+.default {
+  text-transform: uppercase;
+  transition: var(--trans);
+}
+
+form button {
+  min-width: 130px;
+  height: 50px;
+  background: var(--green);
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  color: #fff;
+  border-radius: 10rem;
+  cursor: pointer;
+  font-family: var(--manrope);
+  font-size: 15px;
+  transition: var(--trans);
+}
+
+form button:hover {
+  transform: scale(1.05);
+}
+
+.row {
+  display: flex;
+}
+
+.sidebar {
+  width: 40%;
+  background: #fff;
+  height: 100%;
+}
+
+.recipes {
+  width: 60%;
+  background: #f9f5f3;
+}
+
+.app {
+  padding-top: 60px;
 }
