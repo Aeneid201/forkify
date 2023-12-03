@@ -1,6 +1,6 @@
 :root {
   --trans: 0.4s all ease;
-  --manrope: "Manrope";
+  --poppins: "Poppins";
   --green: #2d6a4f;
 }
 
@@ -11,51 +11,67 @@ body {
 
 body {
   background: #2d6a4f;
-  font-family: var(--manrope);
+  font-family: var(--poppins);
   font-size: 17px;
   font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+body * {
+  box-sizing: border-box;
 }
 
 .header {
-  background: #f9f5f3;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   display: flex;
   align-items: center;
   min-height: 100px;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
+  padding: 0 20px 0 100px;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
   display: block;
   width: 100%;
   overflow: hidden;
   box-shadow: 0 2rem 6rem 0.5rem rgba(97, 85, 81, 0.2);
   min-height: 100vh;
+  background: #f9f5f3;
+  border-radius: 8px;
 }
 
 a {
   color: #000;
   text-decoration: none;
-  font-family: var(--manrope);
+  font-family: var(--poppins);
 }
 
 .header .default {
   padding: 20px;
   display: block;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 }
+
+.header .default:hover {
+  background: #f2efee;
+}
+
 .form-control {
   border: none;
   outline: none;
   padding-left: 20px;
   width: 100%;
   font-size: 16px;
-  font-family: var(--manrope);
+  font-family: var(--poppins);
   background: none;
+  min-width: 250px;
 }
 
 form {
@@ -67,10 +83,12 @@ form {
 .default {
   text-transform: uppercase;
   transition: var(--trans);
+  font-weight: 600;
+  font-size: 16px;
 }
 
 form button {
-  min-width: 130px;
+  min-width: 150px;
   height: 50px;
   background: var(--green);
   border: none;
@@ -79,7 +97,7 @@ form button {
   color: #fff;
   border-radius: 10rem;
   cursor: pointer;
-  font-family: var(--manrope);
+  font-family: var(--poppins);
   font-size: 15px;
   transition: var(--trans);
 }
@@ -96,6 +114,10 @@ form button:hover {
   width: 40%;
   background: #fff;
   height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .recipes {
@@ -104,5 +126,81 @@ form button:hover {
 }
 
 .app {
-  padding-top: 60px;
+  padding: 60px 0;
+  min-height: 100vh;
+}
+
+.actionDiv {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.default i,
+button i {
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+ul.nolist {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.singleRecipe img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.singleRecipe a {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  transition: var(--trans);
+}
+
+.singleRecipe a:hover,
+.singleRecipe.active a {
+  background: #f9f5f3;
+  transform: translateY(-2px);
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.singleRecipe .details {
+  padding-left: 20px;
+}
+
+.singleRecipe .details p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.singleRecipe .details span {
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+.d-none {
+  display: none;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.copyrights {
+  padding: 20px 10px;
+}
+
+.copyrights p {
+  font-size: 12px;
+  margin: 0;
+  text-align: center;
 }
