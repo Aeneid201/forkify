@@ -1,59 +1,30 @@
 import "@fontsource/poppins";
 import '@fortawesome/fontawesome-free/css/all.css';
-
-'use strict';
+import {createBookmark} from "./createBookmark";
+import { getSearch } from "./getSearch";
+import { getRecipe } from "./getRecipe";
+import { createRecipeItem } from "./createRecipeItem";
+import { showRecipeDetails } from "./showRecipeDetails";
+import { addToLocalStorage, removeFromLocalStorage } from "./localStorage";
 
 const resultsList = document.querySelector('.results');
 const search__form = document.querySelector('.search');
 const errorMsg = document.querySelector('.errorMsg');
+const recipes = document.querySelector('.recipes');
+const bookmarksContainer = document.querySelector('.bookmarksContainer');
+const getBookmarks = document.querySelector('[data-action="get__bookmarks"]');
 
+resultsList.addEventListener('click', function(e){
+    let current = e.target.closest('.singleRecipeItem');
+    let recipeID = current.getAttribute('data-recipeid');
+    let prom = getRecipe(recipeID);
 
-const getSearch = async function(keyword) {
-    try{
-        const response = await fetch(`https://forkify-api.herokuapp.com/api/search?q=${keyword}`);
-        const data = await response.json();
+    prom.then(res => {
+        if(!res) return;
+        showRecipeDetails(res);
+    });
+});
 
-        if(data.error) {
-            errorMsg.classList.remove('d-none');
-            throw new Error('No results found for query');
-        };
-
-        return data['recipes'];
-    }catch (err) {
-        console.error(`Error: ${err.message}`);
-    }
-}
-
-const getRecipe = async function(id) {
-    try{
-        const response = await fetch(`https://forkify-api.herokuapp.com/api/get?rId=${id}`);
-        const data = await response.json();
-
-        if(data.error) {
-            errorMsg.classList.remove('d-none');
-            throw new Error('Invalid recipe ID');
-        };
-
-        return data['recipe'];
-    }catch (err) {
-        console.error(`Error: ${err.message}`);
-    }
-}
-
-
-const createRecipeItem = function(data) {
-    let layout = `<li class="singleRecipe" data-recipeID="${data['recipe_id']}">
-    <a href="#" data-action="preview__recipe">
-        <img src="${data['image_url']}" alt="${data['title']}">
-        <div class="details">
-            <p class="title text-uppercase">${data['title']}</p>
-            <span class="publisher">${data['publisher']}</span>
-        </div>
-    </a>
-</li>`;
-
-resultsList.insertAdjacentHTML('beforeend', layout);
-}
 
 search__form.addEventListener('submit', function(e){
     e.preventDefault();
@@ -69,3 +40,32 @@ search__form.addEventListener('submit', function(e){
         res.map(recipe => {createRecipeItem(recipe);});
     });
 });
+
+
+recipes.addEventListener('click', function(e){
+    let target = e.target;
+    if(!target.closest('.add__bookmark')) return;
+    let current = target.closest('.add__bookmark');
+    let recipeid = current.getAttribute('data-recipeid');
+
+    addToLocalStorage(recipeid);
+});
+
+getBookmarks.addEventListener('mouseover', () => {
+    const bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+    bookmarksContainer.classList.add('show');
+    // console.log(bookmarks);
+    // bookmarks.map(bookmark => {
+    //     let prom = getRecipe(bookmark);
+
+    //     prom.then(res => {
+    //         if(!res) return;
+    //         createBookmark(res);
+    //     });
+    // });
+});
+
+getBookmarks.addEventListener('mouseout', () => {
+    bookmarksContainer.classList.remove('show');
+});
+

@@ -23,14 +23,19 @@
 
                 <div class="searchform">
                     <form class="search">
-                        <input type="text" class="form-control" placeholder="Search for a dish">
+                        <input type="text" class="form-control" placeholder="Search over 1,000,000 recipes">
                         <button type="submit"><i class="fa-solid fa-search"></i> Search</button>
                     </form>
                 </div>
 
                 <div class="actionDiv">
                     <a href="#" data-action="add__recipe" class="default"><i class="fa-solid fa-pencil-alt"></i>  Add recipe</a>
-                    <a href="" data-action="get__bookmarks" class="default"> <i class="fa-solid fa-bookmark"></i> Bookmarks</a>
+                    <div class="bookmarks position-relative">
+                        <a href="#" data-action="get__bookmarks" class="default"> <i class="fa-solid fa-bookmark"></i> Bookmarks</a>
+                        <div class="bookmarksContainer">
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -60,6 +65,7 @@
                 <div class="welcome">
                     <p class="text-center">Start by searching for a recipe or an ingredient.</p>
                 </div>
+
             </div>
         </div>
     </div>
