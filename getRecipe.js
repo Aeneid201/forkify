@@ -1,5 +1,5 @@
 const errorMsg = document.querySelector('.errorMsg');
-export const getRecipe = async function(id) {
+export const getRecipe = async (id) => {
     try{
         const response = await fetch(`https://forkify-api.herokuapp.com/api/get?rId=${id}`);
         const data = await response.json();

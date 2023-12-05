@@ -285,15 +285,43 @@ ul.nolist {
 .bookmarksContainer {
   position: absolute;
   background: #fff;
-  padding: 15px;
   width: 100%;
   min-width: 400px;
   right: 0;
   opacity: 0;
   transition: var(--trans);
   z-index: 1;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
-.bookmarksContainer.show {
+a[data-action="get__bookmarks"]:hover + .bookmarksContainer,
+.bookmarksContainer:hover {
   opacity: 1;
+  visibility: visible;
+}
+
+.sidebar .results {
+  max-height: 120vh;
+  overflow-y: auto;
+}
+
+.handleBookmark {
+  color: #fff;
+  background: var(--green);
+  width: 50px;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 50%;
+  font-size: 20px;
+  transition: var(--trans);
+}
+
+.handleBookmark:hover {
+  background: #000;
+}
+
+.handleBookmark i {
+  margin: 0;
 }

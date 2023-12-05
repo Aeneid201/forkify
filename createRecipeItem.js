@@ -1,5 +1,5 @@
 const resultsList = document.querySelector('.results');
-export const createRecipeItem = function(data) {
+export const createRecipeItem = (data) => {
     let layout = `<li class="singleRecipeItem" data-recipeID="${data['recipe_id']}">
     <a href="javascript:void(0);" data-action="preview__recipe">
         <img src="${data['image_url']}" alt="${data['title']}">
